@@ -3,12 +3,16 @@ A simple application to learn the how to navigate using the react_native_navigat
 
 # Install the below modules and dependencies
 
+```
 yarn add react-native-navigation
+```
 
 # Link the dependencies by installing the pods
 
+```
 cd ios
 pod install
+```
 
 # Modify the AppDelegate.m file
 
