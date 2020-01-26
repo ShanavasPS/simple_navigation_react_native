@@ -14,6 +14,7 @@ pod install
 
 Replace the didFinishLaunchingWithOptions method with the below code
 
+```
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -29,3 +30,4 @@ Replace the didFinishLaunchingWithOptions method with the below code
   
   return YES;
 }
+```
