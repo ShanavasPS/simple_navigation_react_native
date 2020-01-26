@@ -41,10 +41,7 @@ export const goToLogin = () =>
         children: [
           {
             component: {
-              name: "HomeScreen",
-              passProps: {
-                username
-              }
+              name: "HomeScreen"
             },            
           }
         ]

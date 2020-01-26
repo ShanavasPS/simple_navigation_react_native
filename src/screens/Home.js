@@ -13,9 +13,7 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
   render() {
-    console.log(this.props)
     const { username } = this.props;
-    console.log(username)
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Hi {username}!</Text>
@@ -44,6 +42,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {    
+    username: state.username,
   };
 };
 

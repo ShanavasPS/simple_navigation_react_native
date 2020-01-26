@@ -12,6 +12,8 @@ import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from 'rea
 import { goToHome } from "../../navigation"; // import the functions for loading the home screen
 import { connect } from 'react-redux';
 
+import {loginGetSuccess} from '../../action'
+
 class Login extends Component {
 
   static get options() {
@@ -28,7 +30,6 @@ class Login extends Component {
   state = {
     username: ''
   }
-
 
   render() {
     return (
@@ -62,7 +63,8 @@ class Login extends Component {
     const { username } = this.state;
     if (username) {
       // await AsyncStorage.setItem('username', username);
-      goToHome(username);
+      goToHome();
+      this.props.loginGetSuccess(username);
     }
   }
 
@@ -112,12 +114,12 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  return {    
+  return {   
   };
 };
 
-const mapDispatchToProps = {
-  
-};
+const mapDispatchToProps = dispatch => ({
+  loginGetSuccess: username => dispatch(loginGetSuccess(username)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

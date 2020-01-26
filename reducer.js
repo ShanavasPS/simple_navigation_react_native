@@ -17,6 +17,13 @@ export default rootReducer = (state = INITIAL_STATE, action) => {
         username: action.username,
       }
     }
+    case Constants.LOGIN_GET_ERROR: {
+      return {
+        ...state,
+        error: null,
+        username: '',
+      }
+    }
     default: {
       return state
     }
