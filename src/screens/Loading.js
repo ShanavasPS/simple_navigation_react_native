@@ -11,8 +11,9 @@ import React, { Component } from "react";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 
 import { goToLogin } from "../../navigation"; // import the functions for loading the login screen
+import { connect } from 'react-redux';
 
-export default class Loading extends Component {
+class Loading extends Component {
   async componentDidMount() {
     goToLogin();
   }
@@ -35,3 +36,14 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+
+const mapStateToProps = state => {
+  return {    
+  };
+};
+
+const mapDispatchToProps = {
+  
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Loading);

@@ -9,8 +9,9 @@ import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
 import { goToLogin } from "../../navigation";
+import { connect } from 'react-redux';
 
-export default class Home extends Component {
+class Home extends Component {
   render() {
     console.log(this.props)
     const { username } = this.props;
@@ -40,3 +41,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
+const mapStateToProps = state => {
+  return {    
+  };
+};
+
+const mapDispatchToProps = {
+  
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

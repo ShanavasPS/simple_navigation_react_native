@@ -10,8 +10,9 @@ import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { goToHome } from "../../navigation"; // import the functions for loading the home screen
+import { connect } from 'react-redux';
 
-export default class Login extends Component {
+class Login extends Component {
 
   static get options() {
     return {
@@ -109,3 +110,14 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
+const mapStateToProps = state => {
+  return {    
+  };
+};
+
+const mapDispatchToProps = {
+  
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

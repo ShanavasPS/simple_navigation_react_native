@@ -8,8 +8,9 @@
 
 import React, { Component } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { connect } from 'react-redux';
 
-export default class ForgotPassword extends Component {
+class ForgotPassword extends Component {
   static get options() {
     return {
       topBar: {
@@ -80,3 +81,14 @@ const styles = StyleSheet.create({
     padding: 5
   }
 });
+
+const mapStateToProps = state => {
+  return {    
+  };
+};
+
+const mapDispatchToProps = {
+  
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);

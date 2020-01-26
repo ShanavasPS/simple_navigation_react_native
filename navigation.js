@@ -10,9 +10,10 @@ import { Navigation } from "react-native-navigation";
 
 import Login from "./src/screens/Login";
 import ForgotPassword from "./src/screens/ForgotPassword";
+import ReduxProvider from "./createStore"
 
-Navigation.registerComponent(`LoginScreen`, () => Login);
-Navigation.registerComponent(`ForgotPasswordScreen`, () => ForgotPassword);
+Navigation.registerComponent(`LoginScreen`, () => ReduxProvider(Login), () => Login);
+Navigation.registerComponent(`ForgotPasswordScreen`, () => ReduxProvider(ForgotPassword), () => ForgotPassword);
 
 export const goToLogin = () =>
   Navigation.setRoot({
