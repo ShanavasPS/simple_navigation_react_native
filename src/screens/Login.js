@@ -119,7 +119,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  loginGetSuccess: username => dispatch(loginGetSuccess(username)),
+  // loginGetSuccess: username => dispatch(loginGetSuccess(username)),
+  loginGetSuccess: (username) => dispatch({
+    type: 'LOGIN_GET_SUCCESS',
+    username: username,
+  }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

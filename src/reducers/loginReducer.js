@@ -1,16 +1,16 @@
 /**
  * @format
  */
-import * as Constants from './constants'
+import * as Constants from '../../constants'
 
 export const INITIAL_STATE = {
   username: '',
   error: null,
 }
 
-export default rootReducer = (state = INITIAL_STATE, action) => {
+export default loginReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case Constants.LOGIN_GET_SUCCESS: {
+    case Constants.LOGIN_GET_SUCCESS_ASYNC: {
       return {
         ...state,
         error: null,

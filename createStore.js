@@ -4,10 +4,25 @@
 
 import React from "react";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
-import rootReducer from './reducer';
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './src/reducers'
+import createSagaMiddleware from 'redux-saga';
+// Imports: Redux Root Saga
+import { rootSaga } from './src/sagas';
 
-const store = createStore(rootReducer)
+// Middleware: Redux Saga
+const sagaMiddleware = createSagaMiddleware();
+
+// Redux: Store
+const store = createStore(
+    rootReducer,
+    applyMiddleware(
+      sagaMiddleware
+    ),
+  );
+
+// Middleware: Redux Saga
+sagaMiddleware.run(rootSaga);
 
 export default function ReduxProvider(Component) {
     return (props) => (
