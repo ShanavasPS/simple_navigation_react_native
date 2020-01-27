@@ -7,14 +7,13 @@
  */
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
-
-import { goToLogin } from "../../navigation";
 import { connect } from 'react-redux';
+
+import * as Constants from '../../constants'
+import { goToLogin } from "../../navigation";
 
 class Home extends Component {
   render() {
-    const { username } = this.props;
-    console.log('username inside Home is ' + username)
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Hi {this.props.username}!</Text>
@@ -26,6 +25,7 @@ class Home extends Component {
 
   logout = async () => {
     goToLogin();
+    this.props.logoutGetSuccess();
   };
 }
 
@@ -42,15 +42,16 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log('State:');
-  console.log(state);
   return {    
-    username: state.login.username.username,
+    username: state.login?.username?.username,
   };
 };
 
-const mapDispatchToProps = {
-  
-};
+const mapDispatchToProps = dispatch => ({
+  logoutGetSuccess: () => dispatch({
+    type: Constants.LOGOUT_GET_SUCCESS,
+    username: null,
+  }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

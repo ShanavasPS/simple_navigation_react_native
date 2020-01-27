@@ -9,10 +9,10 @@
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import { goToHome } from "../../navigation"; // import the functions for loading the home screen
 import { connect } from 'react-redux';
 
-import {loginGetSuccess} from '../../action'
+import { goToHome } from "../../navigation"; // import the functions for loading the home screen
+import * as Constants from '../../constants'
 
 class Login extends Component {
 
@@ -121,7 +121,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   // loginGetSuccess: username => dispatch(loginGetSuccess(username)),
   loginGetSuccess: (username) => dispatch({
-    type: 'LOGIN_GET_SUCCESS',
+    type: Constants.LOGIN_GET_SUCCESS,
     username: username,
   }),
 });

@@ -17,8 +17,26 @@ function* loginUser(username) {
     console.log(error);
   }
 };
-// Watcher: Increase Counter Async
+// Watcher: Login user Async
 export function* watchLoginUser() {
   // Take Last Action Only
   yield takeLatest(Constants.LOGIN_GET_SUCCESS, loginUser);
+};
+
+function* logoutUser() {
+  try {
+    // Dispatch Action To Redux Store
+    yield put({
+      type: Constants.LOGOUT_GET_SUCCESS_ASYNC,
+      username: null,
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
+};
+// Watcher: Logout User Async
+export function* watchLogoutUser() {
+  // Take Every Action 
+  yield takeEvery(Constants.LOGOUT_GET_SUCCESS, logoutUser);
 };

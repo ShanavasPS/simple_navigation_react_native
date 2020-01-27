@@ -10,12 +10,17 @@
 import React, { Component } from "react";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 
-import { goToLogin } from "../../navigation"; // import the functions for loading the login screen
+import { goToLogin, goToHome } from "../../navigation"; // import the functions for loading the login screen
 import { connect } from 'react-redux';
 
 class Loading extends Component {
   async componentDidMount() {
-    goToLogin();
+    const { username } = this.props;
+    if (username) {
+      goToHome();
+    } else {
+      goToLogin();
+    }
   }
 
   render() {
@@ -39,6 +44,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {    
+    username: state.login?.username?.username,
   };
 };
 

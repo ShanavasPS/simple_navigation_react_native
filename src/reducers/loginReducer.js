@@ -21,7 +21,14 @@ export default loginReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         error: null,
-        username: '',
+        username: null,
+      }
+    }
+    case Constants.LOGOUT_GET_SUCCESS_ASYNC: {
+      return {
+        ...state,
+        error: null,
+        username: null,
       }
     }
     default: {
