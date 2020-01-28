@@ -12,7 +12,7 @@ import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from 'rea
 import { connect } from 'react-redux';
 
 import { goToHome } from "../../navigation"; // import the functions for loading the home screen
-import * as Constants from '../../constants'
+import * as UserActions from '../../action'
 
 class Login extends Component {
 
@@ -28,7 +28,8 @@ class Login extends Component {
   }
 
   state = {
-    username: ''
+    username: '',
+    password: '',
   }
 
   render() {
@@ -44,14 +45,20 @@ class Login extends Component {
                 style={styles.textInput}
               />
             </View>
-
+            <View style={styles.fieldContainer}>
+              <Text style={styles.label}>Enter your password</Text>
+              <TextInput
+                onChangeText={password => this.setState({ password })}
+                style={styles.textInput}
+              />
+            </View>
             <Button title="Login" color="#0064e1" onPress={this.login} />
             <TouchableOpacity onPress={this.goToForgotPassword}>
               <View style={styles.center}>
                 <Text style={styles.link_text}>Forgot Password</Text>
               </View>
             </TouchableOpacity>
-
+            <Button title="Register" color="#0064e1" onPress={this.goToRegister} />
           </View>
         </View>
       </View>
@@ -60,12 +67,20 @@ class Login extends Component {
 
   //
   login = async () => {
-    const { username } = this.state;
+    const { username, password } = this.state;
     if (username) {
       // await AsyncStorage.setItem('username', username);
-      goToHome();
-      this.props.loginGetSuccess(username);
+      const userInfo = { username, password }
+      this.props.loginGetSuccess(userInfo);
     }
+  }
+
+  goToRegister = () => {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'RegisterUserScreen',
+      }
+    });
   }
 
   goToForgotPassword = () => {
@@ -75,7 +90,6 @@ class Login extends Component {
       }
     });
   }
-
 }
 //
 
@@ -119,11 +133,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  // loginGetSuccess: username => dispatch(loginGetSuccess(username)),
-  loginGetSuccess: (username) => dispatch({
-    type: Constants.LOGIN_GET_SUCCESS,
-    username: username,
-  }),
+  loginGetSuccess: (userInfo) => dispatch(UserActions.loginGetSuccess(userInfo)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

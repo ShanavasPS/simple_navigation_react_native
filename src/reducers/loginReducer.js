@@ -10,6 +10,13 @@ export const INITIAL_STATE = {
 
 export default loginReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case Constants.REGISTER_USER_ASYNC: {
+      return {
+        ...state,
+        error: null,
+        username: action.username,
+      }
+    }
     case Constants.LOGIN_GET_SUCCESS_ASYNC: {
       return {
         ...state,
