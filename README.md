@@ -9,7 +9,6 @@ yarn add react-redux
 yarn add redux
 yarn add redux-persist
 yarn add redux-saga
-yarn add fire
 yarn add @react-native-firebase/app
 yarn add @react-native-firebase/auth
 ```
