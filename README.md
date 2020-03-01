@@ -1,17 +1,6 @@
 # Navigation
 A simple application to learn the how to use the most common react native libraries
 
-# Install the below dependencies
-
-```
-yarn add react-native-navigation
-yarn add react-redux
-yarn add redux
-yarn add redux-persist
-yarn add redux-saga
-yarn add @react-native-firebase/app
-yarn add @react-native-firebase/auth
-```
 
 # Link the dependencies by installing the pods
 
